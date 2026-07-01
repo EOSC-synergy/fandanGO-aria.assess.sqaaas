@@ -1,0 +1,64 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/FragmentScreen/fandanGO-aria:
+      branch: feature/storage-brokering
+      repo: https://github.com/FragmentScreen/fandanGO-aria
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria git:
+        commands:
+        - /usr/bin/env sh .sqa/script.sage_rational_pangolin.sh
+        container: qc.acc_viridian_grateful_wasp
+  QC.Doc:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.kiwi_restless_dhole.sh
+        container: qc.doc_boysenberry_focused_serval
+      github.com/FragmentScreen/fandanGO-aria git:
+        commands:
+        - /usr/bin/env sh .sqa/script.tundra_fearless_baboon.sh
+        container: qc.doc_fandango_vigilant_elk
+      github.com/FragmentScreen/fandanGO-aria markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.reef_zealous_eagle.sh
+        container: qc.doc_goldenrod_anxious_grizzly
+  QC.Lic:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.harlequin_vigilant_owl.sh
+        container: qc.lic_porcelain_zealous_pegasus
+  QC.Sec:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.ecru_stoic_kraken.sh
+        container: qc.sec_chestnut_driven_thrush
+  QC.Sty:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.celadon_assured_iguana.sh
+        container: qc.sty_ruby_courageous_boa
+  QC.Uni:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.sapphire_generous_starfish.sh
+        container: qc.uni_vermilion_worried_penguin
+  QC.Ver:
+    repos:
+      github.com/FragmentScreen/fandanGO-aria get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.paprika_flexible_beaver.sh
+        container: qc.ver_currant_thankful_phoenix
+timeout: 5400
